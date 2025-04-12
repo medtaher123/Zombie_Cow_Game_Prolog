@@ -17,7 +17,11 @@ This project is a simple video game written in Prolog. The game involves a chara
 
 ## How to Try the Project
 
-### 1. Clone the repository
+### Option 1: Normal Execution with SWI-Prolog
+
+If you have SWI-Prolog installed, you can follow these steps to run the game:
+
+#### 1. Clone the repository
 Clone the project repository to your local machine using the following command:
 
 ```bash
@@ -25,7 +29,7 @@ git clone https://github.com/medtaher123/Zombie_Cow_Game_Prolog
 ```
 
 
-### 2. Navigate to the project folder 
+#### 2. Navigate to the project folder 
 
 
 After cloning, go to the folder containing the project files:
@@ -37,29 +41,43 @@ cd Zombie_Cow_Game_Prolog
 ```
 
 
-### 3. Execute the project in SWI-Prolog 
+#### 3. Execute the project in SWI-Prolog 
 
 
-Run the SWI-Prolog interpreter by executing:
+Run the SWI-Prolog interpreter and start the game in one step:
+
+
+```bash
+swipl -s main.pl -g jeu
+```
+This will start the game directly in SWI-Prolog.
+
+
+
+
+### Option 2: Easier Execution with Docker 
+
+
+If you don't have SWI-Prolog installed or you want an easier way to run the game, you can use Docker. Docker simplifies the process by running the game in a container.
+
+
+#### 1. Build and run the Docker container 
+
+
+To build the Docker image and run the game, use the following commands:
 
 
 
 ```bash
-swipl -s main.pl
+# Build the Docker image
+docker build -t zombie-cows-game .
+
+# Run the Docker container interactively and remove it after execution
+docker run -it --rm zombie-cows-game
 ```
 
 
-### 4. Start the game 
-
-
-Once SWI-Prolog is loaded, start the game by typing the following command in the Prolog environment:
-
-
-
-```prolog
-:- jeu.
-```
-
+This will build the Docker image and start the game in the terminal, where you can interact with it just like in SWI-Prolog.
 ### 5. Configuring the Project
 
 You can adjust the number of rocks, trees, and cows, as well as the size of the board, in the config.pl file. This allows you to customize the difficulty of the game.
@@ -73,6 +91,9 @@ You can adjust the number of rocks, trees, and cows, as well as the size of the 
 - **Stay in Place**: `a.`
 
 These controls are configurable and can be adjusted in the configuration file to suit your preferences.
+
+# Feel Free to Fork and Contribute
+Feel free to fork this project, make improvements, or open pull requests. Contributions are always welcome!
 
 
 
