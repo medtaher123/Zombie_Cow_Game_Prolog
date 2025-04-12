@@ -1,4 +1,5 @@
-:- consult('config.pl'). 
+:- consult('config.pl').
+:- consult('translations.pl'). 
 :- consult('utils.pl').
 
 
@@ -142,7 +143,8 @@ afficher_ligne(X,Y):-
         
 % le jeu:
 question(Action):- % read 1 char
-        log('Entrez votre choix(z:nord, s:sud, q:est, d:ouest): ',question),
+        log('Entrez votre choix: ',question),
+        log('(n=nord, s=sud, e=est, o=ouest, a=reste): ',question),
         read(Ch),
         get_char(_), % pour consommer le retour a la ligne
         input_map(Ch,Action),
@@ -243,7 +245,7 @@ initialisation:-
 
 reset:- 
         % etes vous surs de vouloir reinitialiser le jeu?
-        log("etes vous surs de vouloir reinitialiser le jeu? [y/N]",warning),
+        log('etes vous surs de vouloir reinitialiser le jeu? [y/N]: ',warning),
         get_char(Ch),
         get_char(_), % pour consommer le retour a la ligne
         Ch = 'y',
@@ -260,7 +262,7 @@ reset(1):-
         jeu.
 
 rejouer:- 
-        log("Voulez-vous rejouer? [y/N]",warning),
+        log("voulez-vous rejouer? [y/N]: ",warning),
         get_char(Ch),
         get_char(_), % pour consommer le retour a la ligne
         Ch = 'y',
@@ -277,7 +279,7 @@ jeu:-   round(Round),
         next_round.
 
 jeu:-   round(Round),
-        write('Tour: '),write(Round),nl,
+        log('Tour: '),write(Round),nl,
         question(Action),
         deplacement_joueur(Action),
         zombification,
@@ -296,7 +298,7 @@ next_round:-
 next_round:-nl,
         round(Round),
         log('Vous avez perdu!',alert),nl,
-        log("Vous avez survecu ",success),log(Round,success),log(' tours',success),nl,
+        log('Vous avez survecu ',success),log(Round,success),log(' tours!',success),nl,
         log('Fin du jeu!'),nl,
         rejouer.
 

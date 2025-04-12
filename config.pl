@@ -31,6 +31,9 @@ color_code(white, 37).
 
 % --------------------  game config  --------------------
 
+%supported languages: fr, en, ger
+langauge(fr).
+
 largeur(10).
 hauteur(10).
 
