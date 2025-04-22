@@ -144,7 +144,12 @@ afficher_ligne(X,Y):-
 % le jeu:
 question(Action):- % read 1 char
         log('Entrez votre choix: ',question),
-        log('(n=nord, s=sud, e=est, o=ouest, a=reste): ',question),
+        input_map(Nord_char, nord),
+        input_map(Sud_char, sud),
+        input_map(Est_char, est),
+        input_map(Ouest_char, ouest),
+        input_map(Reste_char, reste),
+        log('(',question),log(Nord_char,question),log('=',question),log('nord',question),log(', ',question),log(Sud_char,question),log('=',question),log('sud',question),log(', ',question),log(Est_char,question),log('=',question),log('est',question),log(', ',question),log(Ouest_char,question),log('=',question),log('ouest',question),log(', ',question),log(Reste_char,question),log('=',question),log('reste',question),log('): ',question),
         read(Ch),
         get_char(_), % pour consommer le retour a la ligne
         input_map(Ch,Action),
